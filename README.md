@@ -6,20 +6,10 @@ How to debug OoT and MM in the ares emulator with decomp and gdb
 2. (Optional) I recommend moving the repository to your windows directory because when I try to open the repo from WSL in VSCode, it takes forever to search.  
 3. Build the game and make sure you get "OK" when building.  
 4. Now that the build is complete, you need to make some changes to the makefile to build it with gcc instead of ido. This is required for gdb debugging.  
-	- Find this line: ```COMPILER ?= ido``` and replace it with ```COMPILER ?= gcc```  
-	- Add the '-ggdb' flag to OPTFLAGS. In OoT, replace  
-	```ifeq ($(COMPILER),gcc)
-  OPTFLAGS := -Os -ffast-math -fno-unsafe-math-optimizations
-endif```  
-	with  
-	```ifeq ($(COMPILER),gcc)
-  OPTFLAGS := -Os -ggdb -ffast-math -fno-unsafe-math-optimizations
-endif```  
-	In MM, replace  
-	```OPTFLAGS         := -Os -ffast-math -ftrapping-math -fno-associative-math```  
-	with  
-	```OPTFLAGS         := -Os -ggdb -ffast-math -ftrapping-math -fno-associative-math```  
-	- In OoT, you may also want to change the version from ```VERSION ?= gc-eu-mq-dbg``` to ```VERSION ?= ntsc-1.0``` or some other version.  
+	- Find this line: "COMPILER ?= ido" and replace it with "COMPILER ?= gcc"  
+	- In OoT, replace "OPTFLAGS := -Os -ffast-math -fno-unsafe-math-optimizations" with "OPTFLAGS := -Os -ggdb -ffast-math -fno-unsafe-math-optimizations"
+	- In MM, replace "OPTFLAGS         := -Os -ffast-math -ftrapping-math -fno-associative-math" with "OPTFLAGS         := -Os -ggdb -ffast-math -ftrapping-math -fno-associative-math"  
+	- In OoT, you may also want to change the version from "VERSION ?= gc-eu-mq-dbg" to "VERSION ?= ntsc-1.0" or some other version.  
 3. Copy the ".vscode" folder and the "gdb_z64overlay_load_auto.py" file from this repository to the corresponding game's home directory.  
 4. Download Ares (https://ares-emu.net/download) and install it.  
 5. Open Ares and go to Settings -> Debug. Enable the debugger and set port 9123 (you could use another port, but this needs to match the value in ".vscode/launch.json").  
