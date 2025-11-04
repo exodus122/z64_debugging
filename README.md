@@ -10,7 +10,7 @@ How to debug OoT and MM in the ares emulator with decomp and gdb
 	- In OoT, replace "OPTFLAGS := -Os -ffast-math -fno-unsafe-math-optimizations" with "OPTFLAGS := -Os -ggdb -ffast-math -fno-unsafe-math-optimizations"
 	- In MM, replace "OPTFLAGS         := -Os -ffast-math -ftrapping-math -fno-associative-math" with "OPTFLAGS         := -Os -ggdb -ffast-math -ftrapping-math -fno-associative-math"  
 	- In OoT, you may also want to change "VERSION ?= gc-eu-mq-dbg" to "VERSION ?= ntsc-1.0" or some other version.  
-5. Build the game again, with gcc this time. You won't get OK this time and that's fine.
+5. Build the game again, by running the same make command you used earlier. You won't get OK this time and that's fine.
 6. Copy the ".vscode" folder and the "gdb_z64overlay_load_auto.py" file from this repository to the corresponding game's home directory.  
 7. Download the Ares emulator (https://ares-emu.net/download) and install it.  
 8. Open Ares and go to Settings -> Debug. Enable the debugger and set port 9123 (you could use another port, but this needs to match the value in ".vscode/launch.json").  
