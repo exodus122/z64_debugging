@@ -128,7 +128,7 @@ bp_load.silent = True
 bl_free = BreakpointFree("ZeldaArena_Free")
 bl_free.silent = True
 
-bl_system_free = BreakpointFree("SystemArena_FreeDebug")
+bl_system_free = BreakpointFree("SystemArena_Free")
 bl_system_free.silent = True
 
 bl_kaleido = BreakpointKaleidoFree("KaleidoManager_ClearOvl")
